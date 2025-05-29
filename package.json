@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "netlify-build": "NEXT_PUBLIC_NETLIFY_BUILD=true next build"
+    "netlify-build": "rimraf .next && cross-env NEXT_PUBLIC_NETLIFY_BUILD=true next build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.8",

@@ -1,0 +1,9 @@
+# This file tells Netlify which environment variables are public
+# These values appear in the build output, which is expected for client-side usage
+
+[publish]
+  ignoreBuildWarnings = ["*"]
+  [[publish.environment]]
+    NEXT_PUBLIC_SUPABASE_URL = "https://iszfkqlwuuqjnbnyckcf.supabase.co"
+    # The following will be set in the Netlify UI but is marked as known to be public
+    NEXT_PUBLIC_SUPABASE_ANON_KEY = ""
