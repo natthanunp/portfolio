@@ -5,10 +5,6 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  // Optimize for Netlify deployment
-  experimental: {
-    outputFileTracingRoot: undefined,
-  }
 }
 
 module.exports = nextConfig
