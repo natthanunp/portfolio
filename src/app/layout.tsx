@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Natthanun Puntanee | Software Engineer Resume',
+  title: 'Natthanun Puntanee | Portfolio',
   description: 'Natthanun Puntanee - Experienced software engineer with 6+ years in large-scale development, Flutter, React Native, Vue/Nuxt, and Node.js',
   keywords: 'Natthanun Puntanee, software engineer, flutter, react native, vue, nuxt, nodejs, spring boot',
 }
