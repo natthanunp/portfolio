@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-react'
+import { supabase, getDogLikes, incrementDogLikes } from '../lib/supabase'
 
 interface Slide {
   src: string;
@@ -28,7 +29,41 @@ export default function DogSlideshow() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [showHeart, setShowHeart] = useState(false)
+  const [likeCount, setLikeCount] = useState(0)
+  const [hasLikedToday, setHasLikedToday] = useState(false)
+  const [isLiking, setIsLiking] = useState(false)
   const slideshowRef = useRef<HTMLDivElement>(null)
+  // Load like count from Supabase and check if user has already liked today
+  useEffect(() => {
+    const fetchLikes = async () => {
+      const count = await getDogLikes()
+      setLikeCount(count)
+    }
+    
+    fetchLikes()
+
+    // Check if user has already liked today
+    const lastLikeDate = localStorage.getItem('dogSlideshowLastLike')
+    const today = new Date().toDateString()
+    if (lastLikeDate === today) {
+      setHasLikedToday(true)
+    }    // Subscribe to realtime updates
+    const channel = supabase
+      .channel('like_count_changes')
+      .on(
+        'postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'like_count' },
+        (payload) => {
+          console.log('New like detected:', payload.new)
+          setLikeCount(payload.new.count)
+        }
+      )
+      .subscribe()
+
+    return () => {
+      supabase.removeChannel(channel)
+    }
+  }, [])
 
   // Handle autoplay
   useEffect(() => {
@@ -56,6 +91,34 @@ export default function DogSlideshow() {
     setIsAutoPlaying(false)
     setCurrentSlide(index)
   }
+  const handleLike = async () => {
+    // Show heart animation
+    setShowHeart(true)
+    setTimeout(() => setShowHeart(false), 1000)
+    
+    // Prevent multiple simultaneous clicks
+    if (isLiking) {
+      return
+    }
+    
+    setIsLiking(true)
+    
+    try {
+      // Update like count in Supabase
+      const newCount = await incrementDogLikes()
+      console.log('New like count:', newCount)
+      setLikeCount(newCount)
+      
+      // For animation purposes, let's still show the "you liked" indicator
+      // But no longer limit to once per day
+      setHasLikedToday(true)
+      localStorage.setItem('dogSlideshowLastLike', new Date().toDateString())
+    } catch (error) {
+      console.error('Error liking:', error)
+    } finally {
+      setIsLiking(false)
+    }
+  }
 
   return (
     <div className="animate-slide-up">
@@ -72,11 +135,7 @@ export default function DogSlideshow() {
           ref={slideshowRef}
           className="relative aspect-[4/3] w-full bg-gray-100 dark:bg-gray-800 overflow-hidden"
           onMouseEnter={() => setIsAutoPlaying(false)}
-          onMouseLeave={() => setIsAutoPlaying(true)}
-          onDoubleClick={() => {
-            setShowHeart(true)
-            setTimeout(() => setShowHeart(false), 1000)
-          }}
+          onMouseLeave={() => setIsAutoPlaying(true)}          onDoubleClick={handleLike}
         >
           {/* Heart animation on double-click */}
           {showHeart && (
@@ -143,8 +202,20 @@ export default function DogSlideshow() {
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
-        </div>
-      </div>      {/* Custom message */}
+        </div>      </div>      {/* Like counter display */}
+      <div className="flex items-center justify-center space-x-2 mt-4">
+        <Heart className={`w-5 h-5 ${hasLikedToday ? 'text-red-500 fill-red-500' : 'text-gray-400'}`} />
+        <span className="text-gray-700 dark:text-gray-300 font-medium">
+          {likeCount.toLocaleString()} {likeCount === 1 ? 'tail wag' : 'tail wags'} of happiness
+        </span>
+        {hasLikedToday && (
+          <span className="text-primary-600 dark:text-primary-400 text-sm">
+            (woof! thank you! 🐾)
+          </span>
+        )}
+      </div>
+
+      {/* Custom message */}
       <div className="mt-6 p-4 bg-primary-50 dark:bg-gray-800 border border-primary-100 dark:border-gray-700 rounded-lg text-center">
         <p className="text-gray-700 dark:text-gray-300">
           <span className="font-medium">Double-click to like!</span> Hope this little dose of cuteness brightens your day! Have a good one! 😊
