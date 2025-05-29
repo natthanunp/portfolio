@@ -26,7 +26,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto section-padding">
         <div className="flex justify-between items-center h-16">
           <div className="font-bold text-xl gradient-text">
-            Natthanun's Portfolio
+            Natthanun&apos;s Portfolio
           </div>
 
           {/* Desktop Navigation */}
