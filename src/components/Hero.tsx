@@ -75,7 +75,7 @@ export default function Hero() {
               <Mail className="h-6 w-6" />
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/natthanunp"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-gray-800 hover:bg-gray-900 text-white transition-colors duration-200"
@@ -84,7 +84,7 @@ export default function Hero() {
               <Github className="h-6 w-6" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/natthanun-puntanee-016b45158/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200"
