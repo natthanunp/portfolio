@@ -21,9 +21,8 @@ export default function About() {
               scalable, high-performance applications using modern technologies. My expertise spans 
               across mobile development with Flutter and React Native, web development with Vue/Nuxt, 
               and backend services with Node.js and Spring Boot.
-            </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
-              I'm passionate about creating solutions that make a real impact, whether it's handling 
+            </p>            <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+              I&apos;m passionate about creating solutions that make a real impact, whether it&apos;s handling 
               9TB of data per day or building mobile applications for millions of users. I believe 
               in writing clean, maintainable code and implementing robust testing strategies.
             </p>

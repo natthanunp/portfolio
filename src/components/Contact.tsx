@@ -31,17 +31,15 @@ export default function Contact() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Get In Touch
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-purple-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-purple-600 mx-auto mb-6"></div>          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            I&apos;m always open to discussing new opportunities, interesting projects, or just having a chat about technology
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="animate-slide-up">
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
-              Let's Connect
+          <div className="animate-slide-up">            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
+              Let&apos;s Connect
             </h3>
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
