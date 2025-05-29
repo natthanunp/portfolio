@@ -59,16 +59,9 @@ export default function Achievements() {
         </div>
 
         {/* Statistics */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-1 gap-8">
           <div className="text-center">
-            <div className="text-4xl font-bold gradient-text mb-2">6+</div>
-            <div className="text-gray-600 dark:text-gray-300">Years Experience</div>
-          </div>          <div className="text-center">
-            <div className="text-4xl font-bold gradient-text mb-2">10+</div>
-            <div className="text-gray-600 dark:text-gray-300">Projects Delivered</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold gradient-text mb-2">3</div>
+            <div className="text-4xl font-bold gradient-text mb-2">2</div>
             <div className="text-gray-600 dark:text-gray-300">Speaking Events</div>
           </div>
         </div>

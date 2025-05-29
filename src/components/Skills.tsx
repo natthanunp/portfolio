@@ -90,12 +90,11 @@ export default function Skills() {  const skillCategories = [
         {/* Additional Skills Tags */}
         <div className="mt-16 text-center">
           <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
-            Additional Technologies
+            Additional Interests
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
             {[
-              "Agile/Scrum", "E2E Testing", "Performance Optimization", "Microservices",
-            "XR Development", "MarTech", "Gamification"
+              "Agile/Scrum", "CI/CD", "E2E Testing", "Test-driven development", "Performance Optimization", "Github Copilot", "XR Development", "MarTech", "Gamification"
             ].map((tech, index) => (
               <span
                 key={index}

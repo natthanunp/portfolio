@@ -6,7 +6,7 @@ export default function Experience() {
   const experiences = [
     {
       company: "Palo IT Thailand",
-      position: "Software Engineer",
+      position: "Intermediate Software Engineer",
       duration: "Sep 2021 - Present",
       location: "Thailand",
       achievements: [

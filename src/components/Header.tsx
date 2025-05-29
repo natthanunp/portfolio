@@ -7,7 +7,7 @@ import { Sun, Moon, Menu, X } from 'lucide-react'
 export default function Header() {
   const [mounted, setMounted] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
@@ -26,7 +26,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto section-padding">
         <div className="flex justify-between items-center h-16">
           <div className="font-bold text-xl gradient-text">
-            Portfolio
+            Natthanun's Portfolio
           </div>
 
           {/* Desktop Navigation */}
@@ -42,15 +42,14 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center space-x-4">
-            {/* Theme Toggle */}
+          <div className="flex items-center space-x-4">            {/* Theme Toggle */}
             {mounted && (
               <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
                 className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
                 aria-label="Toggle theme"
               >
-                {theme === 'dark' ? (
+                {resolvedTheme === 'dark' ? (
                   <Sun className="h-5 w-5 text-yellow-500" />
                 ) : (
                   <Moon className="h-5 w-5 text-gray-600" />
