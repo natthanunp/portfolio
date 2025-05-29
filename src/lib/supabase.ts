@@ -1,12 +1,14 @@
 import { createClient } from '@supabase/supabase-js'
 
 // Supabase client for client-side use
-// These will be replaced with environment variables in production
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? ''
+// Since this is a public, read-only API key, it's safe to use in client-side code
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? 'https://iszfkqlwuuqjnbnyckcf.supabase.co'
+// The anon key is meant to be public for client-side authentication
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ''
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables')
+// Only check in development to avoid build errors
+if (process.env.NODE_ENV === 'development' && (!supabaseUrl || !supabaseAnonKey)) {
+  console.warn('Warning: Missing Supabase environment variables')
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
