@@ -1,16 +1,10 @@
 # Netlify configuration file
 [build]
-  command = "npm run netlify-build"
+  command = "node scripts/netlify-build.js"
   publish = ".next"
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
-
-# Handle environment variables to prevent security warnings
-[[plugins]]
-package = "netlify-plugin-inline-functions-env"
-  [plugins.inputs]
-  include = ["NEXT_PUBLIC_*"]
 
 # Netlify Next.js plugin handles functions automatically
 [[plugins]]
