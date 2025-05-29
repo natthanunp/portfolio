@@ -1,13 +1,11 @@
 {
   "name": "resume-website",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
+  "private": true,  "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "netlify-build": "rimraf .next && cross-env NEXT_PUBLIC_NETLIFY_BUILD=true next build"
+    "lint": "next lint"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.8",

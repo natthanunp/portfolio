@@ -1,35 +1,11 @@
 # Netlify configuration file
 [build]
-  command = "npm run netlify-build"
+  command = "npm run build"
   publish = ".next"
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
-  # Explicitly tell Netlify that NEXT_PUBLIC_ vars are meant to be public
-  NETLIFY_NEXT_PLUGIN_SKIP = "false"
 
-# This tells Netlify that the NEXT_PUBLIC_ variables are intentionally public
-[build.processing.css]
-  bundle = false
-  minify = false
-
-[build.processing.js]
-  bundle = false
-  minify = false
-
-[build.processing.html]
-  pretty_urls = true
-
-[build.processing.images]
-  compress = true
-
-# Explicitly mark variables that are meant to be public
+# Netlify Next.js plugin handles functions automatically
 [[plugins]]
 package = "@netlify/plugin-nextjs"
-
-# Mark public env vars to avoid security warnings
-[[plugins]]
-package = "netlify-plugin-inline-functions-env"
-  [plugins.inputs]
-  buildEvent = "onBuild"
-  include = ["NEXT_PUBLIC_*"]
