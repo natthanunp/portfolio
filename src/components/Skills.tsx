@@ -77,7 +77,7 @@ export default function Skills() {  const skillCategories = [
                     key={skillIndex} 
                     className={`px-4 py-3 rounded-lg bg-gradient-to-r ${category.color} bg-opacity-10 hover:bg-opacity-20 transition-all duration-200 text-center border border-gray-200 dark:border-gray-700`}
                   >
-                    <span className="text-gray-800 dark:text-gray-200 font-medium">
+                    <span className="text-white dark:text-gray-200 font-medium">
                       {skill.name}
                     </span>
                   </div>
