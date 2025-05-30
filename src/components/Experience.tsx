@@ -10,8 +10,8 @@ export default function Experience() {
       duration: "Sep 2021 - Present",
       location: "Thailand",
       achievements: [
-        "Led the full-stack development of a mobile application and its Backend for Frontend (BFF) using React Native for a top 3 insurance company",
-        "Spearheaded the development of a mobile application for a high-traffic loyalty platform in Thailand using Flutter, with a strong focus on E2E testing using Flutter integration tests and Cucumber",
+        "Developed the full-stack development of a mobile application and its Backend for Frontend (BFF) using React Native for a top 3 insurance company",
+        "Drove the development of a mobile application for a high-traffic loyalty platform in Thailand using Flutter, with a strong focus on E2E testing using Flutter integration tests and Cucumber",
         "Integrated GA4 analytics for user insights",
         "Designed and implemented gamification services delivering diverse user outcomes (Points, Coupons, Message Notifications) triggered by real-time transaction events",
         "Architected and developed a messaging service, replacing a legacy system with Firebase for push notifications and AWS SES for email",
